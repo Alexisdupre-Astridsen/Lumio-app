@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="lumio-g" x1="8" y1="6" x2="58" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6FA8FF"/><stop offset="1" stop-color="#8A6CFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#lumio-g)"/>
+  <path d="M21 15v32h25" fill="none" stroke="#090B1D" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M46 11.5l1.9 4.6 4.6 1.9-4.6 1.9L46 24.5l-1.9-4.6-4.6-1.9 4.6-1.9z" fill="#090B1D"/>
+</svg>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090B1D">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="LUMIO — pilotage de portefeuille Trade Republic, veille de marché et analyse IA, en local.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LUMIO">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="static/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="static/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="static/apple-touch-icon.png">
+<link rel="preload" href="static/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="static/fonts/plexcond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<title>LUMIO</title>
+<link rel="stylesheet" href="static/lumio.css?v=8.1.aed93e86">
+</head>
+<body>
+<div id="splash" aria-hidden="true" title="Toucher pour passer">
+  <svg viewBox="0 0 64 64"><defs><linearGradient id="spg" x1="8" y1="6" x2="58" y2="60" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6FA8FF"/><stop offset="1" stop-color="#8A6CFF"/></linearGradient></defs>
+    <rect width="64" height="64" rx="15" fill="url(#spg)"/>
+    <path class="sp-l" pathLength="1" d="M21 15v32h25" fill="none" stroke="#090B1D" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path class="sp-s" d="M46 11.5l1.9 4.6 4.6 1.9-4.6 1.9L46 24.5l-1.9-4.6-4.6-1.9 4.6-1.9z" fill="#090B1D"/></svg>
+  <div class="sp-n">LUMIO</div>
+</div>
+<a class="sr skip" id="skip" href="#main">Aller au contenu</a>
+<header class="tb" id="tb"><div class="tb-in">
+  <a class="brand" href="#/accueil" aria-label="LUMIO — tableau de bord"><img src="static/icon.svg" alt="" width="28" height="28"><span class="wordmark">LUMIO</span></a>
+  <nav class="nav" aria-label="Sections">
+    <a href="#/accueil" data-v="accueil"><span class="nl-l">Tableau de bord</span><span class="nl-s" aria-hidden="true">Accueil</span></a>
+    <a href="#/portefeuille" data-v="portefeuille">Portefeuille</a>
+    <a href="#/decisions" data-v="decisions">Décisions<span class="badge-dot" hidden></span></a>
+    <a href="#/inities" data-v="inities">Initiés</a>
+    <a href="#/veille" data-v="veille">Veille</a>
+  </nav>
+  <div class="tb-mini" id="tbmini" aria-hidden="true"></div>
+  <div class="tb-r">
+    <button class="qdot" id="qdot" aria-label="Qualité des données" aria-haspopup="dialog" aria-expanded="false"><i></i><span id="qtime">—</span></button>
+    <button class="sync-btn" id="syncBtn" aria-label="Actualiser : Trade Republic, veille et analyse" aria-haspopup="dialog" hidden><span data-ico="refresh"></span><span class="sy-lbl">Actualiser</span></button>
+    <span class="mode-pill" id="mode">…</span>
+    <button class="ibtn" id="findBtn" aria-label="Rechercher une ligne ou un écran (Ctrl+K)" title="Rechercher (Ctrl+K)" aria-haspopup="dialog"><span data-ico="search"></span></button>
+    <button class="ibtn" id="bellBtn" aria-label="Notifications" aria-haspopup="dialog" aria-expanded="false"><span data-ico="bell"></span><i class="bell-n" id="bellN" hidden></i></button>
+    <button class="ibtn" id="privBtn" aria-pressed="false" aria-label="Mode discret : masquer les montants" title="Mode discret : masquer les montants (touche M)"></button>
+    <a class="ibtn" href="#/reglages" id="gearBtn" title="Réglages et données" aria-label="Réglages"></a>
+    <button class="ibtn" id="tourBtn" title="Visite guidée" aria-label="Visite guidée"></button>
+    <button class="btn-ia" id="iaBtn" aria-label="Demander à l'IA" title="Demander à l'IA (touche /)"><span id="iaIco"></span>IA <span class="kbd">/</span></button>
+  </div>
+</div>
+<div class="tb-sub" id="tbsub" aria-hidden="true" inert><div class="tb-sub-in"><div class="tbs-v m" id="tbsv"></div><div id="tbper"></div></div></div>
+</header>
+<main class="page" id="main" tabindex="-1"></main>
+<nav class="bn" id="bn" aria-label="Sections">
+  <a href="#/accueil" data-v="accueil"><span data-ico="home"></span>Accueil</a>
+  <a href="#/portefeuille" data-v="portefeuille"><span data-ico="wallet"></span>Portefeuille</a>
+  <button type="button" class="bn-ia" data-iaopen aria-label="Demander à l'IA"><span data-ico="spark"></span>IA</button>
+  <a href="#/decisions" data-v="decisions"><span data-ico="news"></span>Décider<span class="badge-dot" hidden></span></a>
+  <a href="#/inities" data-v="inities"><span data-ico="users"></span>Initiés</a>
+  <a href="#/veille" data-v="veille"><span data-ico="radar"></span>Veille</a>
+</nav>
+<div class="scrim" id="scrim"></div>
+<div class="pop" id="pop" role="dialog" aria-label="Détails" tabindex="-1"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="sr" id="live" aria-live="polite"></div>
+<script src="static/js/statique.js?v=8.1.aed93e86"></script>
+<script src="static/js/core.js?v=8.1.aed93e86"></script>
+<script src="static/js/charts.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-matin.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-accueil.js?v=8.1.aed93e86"></script>
+<script src="static/js/dash-edit.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-portefeuille.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-analyse.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-patrimoine.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-simu.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-position.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-actus.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-synthese.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-decisions.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-veille.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-inities.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-ia.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-reglages.js?v=8.1.aed93e86"></script>
+<script src="static/js/v-rapport.js?v=8.1.aed93e86"></script>
+<script src="static/js/sync.js?v=8.1.aed93e86"></script>
+<script src="static/js/actualiser.js?v=8.1.aed93e86"></script>
+<script src="static/js/recherche.js?v=8.1.aed93e86"></script>
+<script src="static/js/app.js?v=8.1.aed93e86"></script>
+<script src="static/js/motion.js?v=8.1.aed93e86"></script>
+<script src="static/js/tour.js?v=8.1.aed93e86"></script>
+</body>
+</html>
