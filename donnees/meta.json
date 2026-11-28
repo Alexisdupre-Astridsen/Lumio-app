@@ -1,0 +1,1 @@
+{"v": 1, "kdf": {"name": "PBKDF2", "hash": "SHA-256", "iter": 600000, "salt": "P0h5MXkCOmIfIqu1guKtZg=="}, "cipher": "AES-GCM", "stamp": "4b5837bc7fec1987", "nuage": {"stamp": "f92717ddbcc0d026", "ts": 1795884504.3386426, "build": "9.0.ebac2e9c"}}
